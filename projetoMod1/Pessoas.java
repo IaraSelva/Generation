@@ -12,8 +12,12 @@ public abstract class Pessoas  {
 	private String anoNasc;
 	private int idade;
 	private boolean statusVacina;
-	private boolean restrVacina;
-
+	public boolean restrVacina;
+	public boolean setStatusVacina;
+	public String laboratorio; 
+	public int estoqueGeral;
+	public String prioridades;
+	public int segundaDose;
 	
 
 	// construtores para os dados mais relevantes
@@ -29,6 +33,8 @@ public abstract class Pessoas  {
 
 	}
 	
+	
+	
 	//construtor para a classe Postos de Saúde
 	public Pessoas(String zonaCidade) {
 		
@@ -40,38 +46,37 @@ public abstract class Pessoas  {
 		
 	}
 	
+
+	
 	//construtor para a classe Vacina
-	/*public Pessoas(boolean statusVacina, boolean restrVacina) { 
+	public Pessoas(boolean statusVacina, boolean restrVacina) { 
 		this.statusVacina = statusVacina;
 		this.restrVacina = restrVacina;
-	}*/
+	}
 
+	
+	
+	
 	// método para cadastrar a pessoa
 	abstract public void cadastrarPessoa();
 
 	
 
-	/*public void setStatusVacina() { // um método para retornar se a pessoa já se vacinou
-		System.out.println("A pessoa já tomou a primeira dose?(S/N) ");
-		String situacao = ler.nextLine();
-		if (situacao == "S") {
-			this.statusVacina = true;
-		} else {
-			this.statusVacina = false;
-		}
-	}*/
+	public void setStatusVacina() { // um método para retornar se a pessoa já se vacinou
+		
+	}
 	
 	public boolean getStatusVacina() {
 		return this.statusVacina;
 	}
 
-	/*public void setRestrVacina() { //um método para definir se a pessoa tem idade mínima
+	public void setRestrVacina() { //um método para definir se a pessoa tem idade mínima
 		if (getIdade() >= 18) {
 			this.restrVacina = false;
 		} else {
 			this.restrVacina = true;
 		}
-	}*/
+	}
 	
 	public boolean getRestrVacina() {
 		return this.restrVacina;

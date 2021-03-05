@@ -6,7 +6,7 @@ public class Postos extends Pessoas {
 
 	public String região;
 	private String senha;
-
+		
 	private String posto1N = "1 - Drive Thru Jaçanã";
 	private String posto2N = "2 - Drive Thru Tremembé";
 	private String posto3N = "3 - Drive Thru Vila Maria";
@@ -28,7 +28,7 @@ public class Postos extends Pessoas {
 	public int Estoque1S = 300;
 	public int Capacidade1S= 150;
 	 
-	public int Estoque1L = 300;
+	public int Estoque1L = 0;
 	public int Capacidade1L= 50;
 	  
 	public int Estoque2L = 100;
@@ -39,6 +39,8 @@ public class Postos extends Pessoas {
 	  
 	public int Estoque1O = 700;	
 	public int Capacidade1O= 100;
+	
+	public int Estoque = Estoque1N+Estoque2N+Estoque3N+Estoque1S+Estoque1L+Estoque2L+Estoque3L+Estoque1O;
 	
 	Scanner leia = new Scanner(System.in);
 	
@@ -56,6 +58,20 @@ public class Postos extends Pessoas {
 	public Postos() {
 		
 	}
+		public void StatusVacina (){
+			System.out.println("A pessoa já tomou a primeira dose?(S/N) ");
+			String situacao = leia.nextLine();
+			if (situacao == "S") {
+				super.setStatusVacina = true;
+			} else {
+				super.setStatusVacina = false;
+			}
+	}
+		
+		public void restrVacina() {
+			
+		}
+		
 	@Override
 	public void cadastrarPessoa() { // método para cadastrar a pessoa
 
@@ -81,7 +97,81 @@ public class Postos extends Pessoas {
 		setSenha();
 		
 	}
-
+	
+	public void calendario() {
+		
+		//if(Estoque1N!=0 && Estoque2N!=0 && Estoque3N!=0 && Estoque1S!=0 && Estoque1L!=0 && Estoque2L&&Estoque3L&&Estoque1O) {
+			
+		if  (getIdade()<=79 && getIdade()>75)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 03 e 11 de março de 2021.");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 31 de março e 10 de abril de 2021.");
+		}
+		else if (getIdade()<=75 && getIdade()>=70)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 12 e 25 de março de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 11 e 24 de abril de 2021");
+		}
+		else if (getIdade()<70 && getIdade()>=65)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 26 e 10 de abril de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 25 de abril e 11 de maio de 2021");
+		}
+		else if (getIdade()<65 && getIdade()>=60)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 11 de abril e 03 de maio de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 12 de maio e 2 de junho de 2021");
+		}
+		else if (getIdade()<60 && getIdade()>=55)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 04 de maio e 02 de junho de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 03 de junho e 1 de julho de 2021");
+		}
+		else if (getIdade()<55 && getIdade()>=50)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 03 de junho e 08 de julho de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 02 julho e 8 de agosto de 2021");
+		}
+		else if (getIdade()<50 && getIdade()>=45)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 09 de julho e 17 de agosto de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 09 de agosto e 17 de setembro de 2021");
+		}
+		else if (getIdade()<45 && getIdade()>=40)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 18 de agosto e 29 de setembro de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 18 de setembro e 29 de outubro de 2021");
+		}
+		else if (getIdade()<40 && getIdade()>=35)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 30 de setembro e 15 de novembro de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 30 de outubro e 15 de novembro de 2021");
+		}
+		else if (getIdade()<35 && getIdade()>=30)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 16 de novembro de 2021 e 06 de janeiro de 2022");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 14 de dezembro de 2021 e 4 de fevereiro de 2022");
+		}
+		else if (getIdade()<=30 && getIdade()>25)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 07 de janeiro e 04 de março de 2022");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 05 de fevereiro e 01 de abril de 2022");
+		}
+		else if (getIdade()<=25 && getIdade()>=18)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 04 de março e 08 de maio de 2022");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 02 de abril e 14 de junho de 2022");
+		}
+		else if  (getIdade()<18)
+		{
+			System.out.printf("\n Você não pode ser vacinado ");
+		}
+		else if (getIdade()>79)
+		{
+			System.out.printf("\n Você já foi Vacinado");
+		}
+	//}
+}
 	
 	public void setSenha() { // método para concatenar strings e criar a senha
 
