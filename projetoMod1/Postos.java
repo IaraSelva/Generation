@@ -3,8 +3,8 @@ package projetoMod1;
 import java.util.Scanner;
 
 public class Postos extends Pessoas {
-
-	public String região;
+	
+	private String região;
 	private String senha;
 		
 	private String posto1N = "1 - Drive Thru Jaçanã";
@@ -16,169 +16,88 @@ public class Postos extends Pessoas {
 	private String posto3L = "7 - Drive Thru São Mateus";
 	private String posto1O = "8 - Mega Drive Clube Hebraica";
 	
-	public int Estoque1N = 0;
-	public int Capacidade1N = 100;
+	private int Estoque1N = 0;
+	private int Capacidade1N = 100;
 	
-	public int Estoque2N = 200;
-	public int Capacidade2N= 50;
+	private int Estoque2N = 200;
+	private int Capacidade2N= 50;
 
-	public int Estoque3N = 250;
-	public int Capacidade3N= 50;
+	private int Estoque3N = 250;
+	private int Capacidade3N= 50;
 	
-	public int Estoque1S = 300;
-	public int Capacidade1S= 150;
+	private int Estoque1S = 300;
+	private int Capacidade1S= 150;
 	 
-	public int Estoque1L = 0;
-	public int Capacidade1L= 50;
+	private int Estoque1L = 0;
+	private int Capacidade1L= 50;
 	  
-	public int Estoque2L = 100;
-	public int Capacidade2L= 20;
+	private int Estoque2L = 100;
+	private int Capacidade2L= 20;
 	
-	public int Estoque3L = 200;
-	public int Capacidade3L= 50;
+	private int Estoque3L = 200;
+	private int Capacidade3L= 50;
 	  
-	public int Estoque1O = 700;	
-	public int Capacidade1O= 100;
+	private int Estoque1O = 700;	
+	private int Capacidade1O= 100;
 	
-	public int Estoque = Estoque1N+Estoque2N+Estoque3N+Estoque1S+Estoque1L+Estoque2L+Estoque3L+Estoque1O;
+	
 	
 	Scanner leia = new Scanner(System.in);
 	
-	public Postos(String pNome, String mNome, String uNome, String zCidade, String dNasc, String aNasc, int idade) {
-		
-		super(pNome,mNome,uNome,zCidade,dNasc,aNasc,idade);
-	}
-	
-	
-	public Postos(String regiao) {
-		super(regiao);
-			
-	}
 	
 	public Postos() {
 		
 	}
-		public void StatusVacina (){
-			System.out.println("A pessoa já tomou a primeira dose?(S/N) ");
-			String situacao = leia.nextLine();
-			if (situacao == "S") {
-				super.setStatusVacina = true;
-			} else {
-				super.setStatusVacina = false;
-			}
-	}
 		
-		public void restrVacina() {
 			
-		}
-		
 	@Override
 	public void cadastrarPessoa() { // método para cadastrar a pessoa
 
-		System.out.println("Entre com o primeiro nome:");
+		System.out.println("\nEntre com o primeiro nome:");
 		super.setPrimeiroNome(leia.nextLine());
 
-		System.out.println("Entre com o nome do meio (digite 0 caso não exista nome do meio): ");
+		System.out.println("\nEntre com o nome do meio (digite 0 caso não exista nome do meio): ");
 		super.setMeioNome(leia.nextLine());
 
-		if (super.getMeioNome() == "0") { // caso a pessoa não tenha nome do meio
-			super.setMeioNome(null); 
-			
-		}
-
-		System.out.println("Entre com o ultimo nome:");
+		System.out.println("\nEntre com o ultimo nome:");
 		super.setUltimoNome(leia.nextLine());
 					
-		System.out.println("Entre com o ano de nascimento(AAAA):");
-		super.setAnoNasc(leia.nextLine());
+		System.out.println("\nEntre com o ano de nascimento(AAAA):");
+        super.setAnoNasc(leia.nextInt());
 
-		System.out.println("Entre com a idade da pessoa:");
-		super.setIdade(leia.nextInt());
-		setSenha();
+        System.out.println("\nEntre com a idade:");
+        super.setIdade(leia.nextInt());
+        leia.nextLine();
+		
+		if(super.getIdade()<18) {
+			
+			System.out.println("\nVocê não tem idade mínima para tomar a vacina! Favor iniciar o próximo cadastro");
+			cadastrarPessoa();
+			
+		} else {
+			if(super.getPrimeiroNome().equals(null)) {
+				System.out.println("\nPessoa não cadastrada, favor iniciar o cadastro:");
+				cadastrarPessoa();
+			} else {
+				if(super.getMeioNome().equals("0")) {
+					setSenha();
+					System.out.println("A pessoa "+super.getPrimeiroNome()+" "+super.getUltimoNome()+" está cadastrada com a senha "+getSenha());
+				}else {
+					setSenha();
+					System.out.println("A pessoa "+super.getPrimeiroNome()+" "+super.getMeioNome()+" "+super.getUltimoNome()+" está cadastrada com a senha "+getSenha());
+				}
+			}
+			
+		}		
 		
 	}
-	
-	public void calendario() {
-		
-		//if(Estoque1N!=0 && Estoque2N!=0 && Estoque3N!=0 && Estoque1S!=0 && Estoque1L!=0 && Estoque2L&&Estoque3L&&Estoque1O) {
-			
-		if  (getIdade()<=79 && getIdade()>75)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 03 e 11 de março de 2021.");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 31 de março e 10 de abril de 2021.");
-		}
-		else if (getIdade()<=75 && getIdade()>=70)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 12 e 25 de março de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 11 e 24 de abril de 2021");
-		}
-		else if (getIdade()<70 && getIdade()>=65)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 26 e 10 de abril de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 25 de abril e 11 de maio de 2021");
-		}
-		else if (getIdade()<65 && getIdade()>=60)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 11 de abril e 03 de maio de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 12 de maio e 2 de junho de 2021");
-		}
-		else if (getIdade()<60 && getIdade()>=55)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 04 de maio e 02 de junho de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 03 de junho e 1 de julho de 2021");
-		}
-		else if (getIdade()<55 && getIdade()>=50)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 03 de junho e 08 de julho de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 02 julho e 8 de agosto de 2021");
-		}
-		else if (getIdade()<50 && getIdade()>=45)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 09 de julho e 17 de agosto de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 09 de agosto e 17 de setembro de 2021");
-		}
-		else if (getIdade()<45 && getIdade()>=40)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 18 de agosto e 29 de setembro de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 18 de setembro e 29 de outubro de 2021");
-		}
-		else if (getIdade()<40 && getIdade()>=35)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 30 de setembro e 15 de novembro de 2021");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 30 de outubro e 15 de novembro de 2021");
-		}
-		else if (getIdade()<35 && getIdade()>=30)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 16 de novembro de 2021 e 06 de janeiro de 2022");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 14 de dezembro de 2021 e 4 de fevereiro de 2022");
-		}
-		else if (getIdade()<=30 && getIdade()>25)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 07 de janeiro e 04 de março de 2022");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 05 de fevereiro e 01 de abril de 2022");
-		}
-		else if (getIdade()<=25 && getIdade()>=18)
-		{
-			System.out.printf("\n Você deve se vacinar entre os dias 04 de março e 08 de maio de 2022");
-			System.out.printf("\n Você deve tomar a segunda dose entre os dias 02 de abril e 14 de junho de 2022");
-		}
-		else if  (getIdade()<18)
-		{
-			System.out.printf("\n Você não pode ser vacinado ");
-		}
-		else if (getIdade()>79)
-		{
-			System.out.printf("\n Você já foi Vacinado");
-		}
-	//}
-}
 	
 	public void setSenha() { // método para concatenar strings e criar a senha
 
 		StringBuilder senha = new StringBuilder();
 
-		senha.append(super.getPrimeiroNome().charAt(0)).append(super.getAnoNasc())
-				.append(super.getUltimoNome().charAt(0));
+		senha.append(super.getPrimeiroNome().charAt(0)).append(super.getPrimeiroNome().charAt(2)).append(super.getAnoNasc())
+				.append(super.getUltimoNome().charAt(0)).append(super.getUltimoNome().charAt(ultimoNome.length() - 1));
 
 		this.senha = senha.toString();
 
@@ -186,8 +105,8 @@ public class Postos extends Pessoas {
 	
 	
 	public void listaPostos() {
-		System.out.println("Relação Completa dos Postos: \n"+posto1N+"\n"+posto2N+"\n"+posto3N+"\n"+posto1S
-				+"\n"+posto1L+"\n"+posto2L+"\n"+posto3L+"\n"+posto1O+"\n");
+		System.out.println("\n\nRelação Completa dos Postos: \n"+posto1N+"\n"+posto2N+"\n"+posto3N+"\n"+posto1S
+				+"\n"+posto1L+"\n"+posto2L+"\n"+posto3L+"\n"+posto1O+"\n>>Dê um Enter para Prosseguir<<");
 	}
 	
 	
@@ -195,8 +114,8 @@ public class Postos extends Pessoas {
 			leia.nextLine();
 			
 			System.out.println("Entre com a zona da cidade de SP onde a pessoa mora(ZN/ZL/ZS/ZO):");
-			super.setZonaCidade(leia.next());
-			
+			super.setZonaCidade(leia.next().toUpperCase());
+					
 			if(super.getZonaCidade().equals("ZN")) {
 				System.out.println("Escolha o posto desejado na sua região: \n"+posto1N+"\n"+posto2N+"\n"+posto3N);
 				mostraEndereco(leia.nextInt());
@@ -268,6 +187,7 @@ public class Postos extends Pessoas {
 			    System.out.println("Estoque Atual está em : "+getEstoque1N());
 			}else {
 				System.out.println("Está sem vacina, favor voltar outro dia");
+				escolhaPosto();
 			}
 		}	
 		if(posto == 2) {
@@ -277,6 +197,7 @@ public class Postos extends Pessoas {
 				System.out.println("Estoque Atual está em : "+getEstoque2N());
 			}else {
 				System.out.println("Está sem vacina, favor voltar outro dia");
+				escolhaPosto();
 			}
 		}
 			
@@ -287,6 +208,7 @@ public class Postos extends Pessoas {
 				System.out.println("Estoque Atual está em : "+getEstoque3N());
 			}else {
 				System.out.println("Está sem vacina, favor voltar outro dia");
+				escolhaPosto();
 			}
 		}
 		
@@ -307,6 +229,7 @@ public class Postos extends Pessoas {
 				System.out.println("Estoque Atual está em : "+getEstoque1L());
 			}else {
 				System.out.println("Está sem vacina, favor voltar outro dia");
+				escolhaPosto();
 			}
 		}
 		
@@ -317,6 +240,7 @@ public class Postos extends Pessoas {
 				System.out.println("Estoque Atual está em : "+getEstoque2L());
 			}else {
 				System.out.println("Está sem vacina, favor voltar outro dia");
+				escolhaPosto();
 			}
 		}
 		
@@ -327,6 +251,7 @@ public class Postos extends Pessoas {
 				System.out.println("Estoque Atual está em : "+getEstoque3L());
 			}else {
 				System.out.println("Está sem vacina, favor voltar outro dia");
+				escolhaPosto();
 			}	
 		}
 		
@@ -398,6 +323,79 @@ public class Postos extends Pessoas {
 			}
 	}
 	}
+	public void calendario() {
+		
+		
+		if  (getIdade()<=79 && getIdade()>75)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 03 e 11 de março de 2021.");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 31 de março e 10 de abril de 2021.");
+		}
+		else if (getIdade()<=75 && getIdade()>=70)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 12 e 25 de março de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 11 e 24 de abril de 2021");
+		}
+		else if (getIdade()<70 && getIdade()>=65)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 26 e 10 de abril de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 25 de abril e 11 de maio de 2021");
+		}
+		else if (getIdade()<65 && getIdade()>=60)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 11 de abril e 03 de maio de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 12 de maio e 2 de junho de 2021");
+		}
+		else if (getIdade()<60 && getIdade()>=55)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 04 de maio e 02 de junho de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 03 de junho e 1 de julho de 2021");
+		}
+		else if (getIdade()<55 && getIdade()>=50)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 03 de junho e 08 de julho de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 02 julho e 8 de agosto de 2021");
+		}
+		else if (getIdade()<50 && getIdade()>=45)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 09 de julho e 17 de agosto de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 09 de agosto e 17 de setembro de 2021");
+		}
+		else if (getIdade()<45 && getIdade()>=40)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 18 de agosto e 29 de setembro de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 18 de setembro e 29 de outubro de 2021");
+		}
+		else if (getIdade()<40 && getIdade()>=35)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 30 de setembro e 15 de novembro de 2021");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 30 de outubro e 15 de novembro de 2021");
+		}
+		else if (getIdade()<35 && getIdade()>=30)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 16 de novembro de 2021 e 06 de janeiro de 2022");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 14 de dezembro de 2021 e 4 de fevereiro de 2022");
+		}
+		else if (getIdade()<=30 && getIdade()>25)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 07 de janeiro e 04 de março de 2022");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 05 de fevereiro e 01 de abril de 2022");
+		}
+		else if (getIdade()<=25 && getIdade()>=18)
+		{
+			System.out.printf("\n Você deve se vacinar entre os dias 04 de março e 08 de maio de 2022");
+			System.out.printf("\n Você deve tomar a segunda dose entre os dias 02 de abril e 14 de junho de 2022");
+		}
+		else if  (getIdade()<18)
+		{
+			System.out.printf("\n Você não pode ser vacinado ");
+		}
+		else if (getIdade()>79)
+		{
+			System.out.printf("\n Você já foi Vacinado");
+		}
+	
+}
 
 
 	public String getRegião() {

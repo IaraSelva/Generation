@@ -1,19 +1,7 @@
 package projetoMod1;
 
-import java.util.Scanner;
-
 public class Vacina {
-	
-	public String laboratorio; 
-	public int estoqueGeral;
-	public String prioridades;
-	public int segundaDose;
-
-	
-	
-	Scanner ler = new Scanner(System.in);
-
-	
+		
 		public Vacina () {
 			this.infoLaboratorio();
 			this.segundaDose();
@@ -42,7 +30,7 @@ public class Vacina {
 		
 			System.out.println("\n----- Grupos Prioritários -----\n-Pessoas com 60 anos ou mais residentes em instituições de longa permanência"
 					+ "\n-Pessoas com 18 anos ou mais com deficiência\n-População indígena vivendo em terras indígenas\n-Quilombolas"
-					+ "\n-Idosos com 77anos ou mais\n-Profissionais de saúde com 55 anos ou mais\n-Pessoas em situação de rua com 60 anos ou mais"
+					+ "\n-Idosos com 77 anos ou mais\n-Profissionais de saúde com 55 anos ou mais\n-Pessoas em situação de rua com 60 anos ou mais"
 					+ "\n-Profissonais Sepultadores, Velorista, Cremadores e Condutores de Veículos \ndos cemitério público e privados do município de São Paulo"
 					+ "\n-Trabalhadores dos serviços público: CDI, SEAS, Centros de Acolhida Adulto e POP RUA.\n\n\n\n\n\n\n\n\n\n\n\n");
 			
