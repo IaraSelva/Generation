@@ -1,0 +1,56 @@
+h1{
+    text-align: center;
+}
+p{
+    font-size: 15px;
+}
+
+.container{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu li{
+    display: inline;
+    padding: 15px;
+    font-size: 15px;
+    
+}
+
+#menu li a{
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#menu li a:hover{
+    color: cadetblue;
+}
+
+#redes li{
+    display: inline;
+    padding: 20px;
+}
+
+#redes li a{
+    text-decoration: none;
+    color: gray;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#redes li a:hover{
+    font-style: italic;
+}
+
+.texto{
+    padding: 20px;
+}
+
+.img{
+    border-radius: 50%;
+    padding: 20px;
+}
