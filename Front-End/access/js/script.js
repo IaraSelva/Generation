@@ -1,7 +1,7 @@
 let nome = window.document.getElementById("nome");
 let email = window.document.querySelector("#email");
 let mensagem = document.querySelector("#mensagem");
-let img = document.querySelector('.img');
+let mapa = document.querySelector('#mapa');
 let emailOk = false;
 let mensagemOk = false;
 
@@ -36,24 +36,20 @@ function validaEmail(){
 
 function validaMensagem(){
     let txt = document.querySelector('#txtMensagem')
-
+    
     if(mensagem.value.length<100){
         txt.innerHTML = 'Máximo 100 caracteres';
         txt.style.color = 'blue';
         mensagemOk = true;
-    }else{
-        if(mensagem.value.length=100){
+    }else if(mensagem.value.length==100){
             txt.innerHTML = 'Máximo de caracteres atingido';
             txt.style.color = 'green';
             txt.style.display = 'block';
         }else{
-           if(mensagem.value.length>100){
                 txt.innerHTML = 'Máximo de caracteres excedido'
                 txt.style.color = 'red';
            }
-        }
     }
-}
 
 function enviar(){
     if(nomeOk == true && emailOk == true && mensagemOk == true){
@@ -64,11 +60,11 @@ function enviar(){
 }
 
 function imgZoom(){
-    img.style.width = '800px';
-    img.style.height = '500px';
+    mapa.style.width = '800px';
+    mapa.style.height = '500px';
 }
 
 function imgOriginal(){
-    img.style.width = '400px';
-    img.style.height = '250px';
+    mapa.style.width = '400px';
+    mapa.style.height = '250px';
 }
