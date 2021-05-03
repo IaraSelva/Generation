@@ -12,37 +12,36 @@ export class SubscribeComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router;
+    private router: Router
   ) { }
 
-  user: User = new User;
-  confirmarSenha: string;
-  tipoUsuario: string;
+  user: User = new User
+  confirmarSenha: string
+  tipoUsuario: string
 
   ngOnInit() {
     window.scroll(0,0);
   }
 
   confirmSenha(event: any) {
-    this.confirmSenha = event.target.value;
+    this.confirmarSenha = event.target.value
   }
 
   tipoUser(event: any){
-    this.tipoUsuario = event.target.value;
+    this.tipoUsuario = event.target.value
   }
 
   cadastrar(){
-    this.user.tipo = this.tipoUsuario;
+    this.user.tipo = this.tipoUsuario
 
     if(this.user.senha != this.confirmarSenha){
       alert('As senhas não coincidem')
     }else{
-      this.authService.cadastrar(this.user).subscribe((resp: User =>{
+      this.authService.cadastrar(this.user).subscribe((resp: User) =>{
         this.user = resp
         this.router.navigate(['/entrar'])
-        alert('Cadastro Feito!')
+        alert('Cadastro feito com sucesso!')
       })
     }
   }
-
 }
