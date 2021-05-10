@@ -31,14 +31,15 @@ export class LoginComponent implements OnInit {
       environment.nome = this.userLogin.nome
       environment.foto = this.userLogin.foto
 
-      console.log(environment.token)
-      console.log(environment.nome)
-      console.log(environment.foto)
-
       this.router.navigate(['/inicio'])
     }, erro => {
       if (erro.status == 500) {
-        alert('usuário ou senha incorretos')
+        alert('Usuário ou senha incorretos')
+      }
+
+      if(erro.status == 404) {
+        alert('Usuário não cadastrado')
+        this.router.navigate(['/cadastrar'])
       }
     })
   }

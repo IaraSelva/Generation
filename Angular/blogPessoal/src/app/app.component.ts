@@ -12,6 +12,9 @@ export class AppComponent {
     public auth: AuthService
   ){}
 
+  ngOnInit(): void {
+
+  }
 }
 
 
